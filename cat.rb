@@ -1,6 +1,6 @@
 class Cat
-  
-  attr_reader :mealtime
+
+  attr_reader :mealtime, :preferred_food, :name
 
   def initialize(name, preferred_food, mealtime)
     @name = name
@@ -16,7 +16,11 @@ class Cat
       am_pm = "AM"
       mealtime = @mealtime
     end
-    "#{mealtime} #{am_pm}"
+    return "#{mealtime} #{am_pm}"
+  end
+
+  def meow
+    "My name is #{@name} and I hoover #{@preferred_food} at #{eats_at}"
   end
 
 end
