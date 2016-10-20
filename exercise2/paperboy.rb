@@ -1,6 +1,6 @@
 class Paperboy
 
-  attr_reader :name
+  attr_reader :name, :earnings
   attr_accessor :experience
 
   def initialize(name)
@@ -29,6 +29,10 @@ class Paperboy
     @earnings = @earnings + money_earned
     return money_earned
 
+  end
+
+  def report
+    "I'm #{ @name }, I've delivered #{ @experience } papers and have earned $#{ @earnings }!"
   end
 
 end
