@@ -27,3 +27,6 @@ end
 
 meowsers = Cat.new('Meowsers', 'Fancy Feast', 19)
 trousers = Cat.new('Trousers', 'Kibbles n Bits', 18)
+
+puts meowsers.meow
+puts trousers.meow
