@@ -1,39 +1,37 @@
 class Rover
 
-  def initialize
-    puts "Enter a name for the new rover:"
-    @name       = gets.chomp
-    puts "Enter x coordinate for new rover:"
-    @x_coord    = gets.chomp
-    puts "Enter y coordinate for new rover:"
-    @y_coord    = gets.chomp
-    puts "Enter direction for new rover (N, E, S or W):"
-    @direction  = gets.chomp
+  attr_accessor :x_coord, :y_coord, :direction
+
+  def initialize(x_coord, y_coord, direction)
+    @x_coord    = x_coord
+    @y_coord    = y_coord
+    @direction  = direction
   end
 
-  def read_instruction
-    #5, 5
-    #1, 1, N
-    #LRLMLRRLLMMMMR
-    puts "What do you want to do? (type move or turn):"
-    instruction = gets.chomp
-    if instruction == "move"
-      return move
-    elsif instruction == "turn"
-      return turn
+  def direction_to_degrees
+    if @direction == "N"
+      @direction_to_degrees = 0
+    elsif @direction == "E"
+      @direction_to_degrees = 90
+    elsif @direction == "S"
+      @direction_to_degrees = 180
     else
-      return "You entered #{instruction}, that's not valid!"
+      @direction_to_degrees = 270
     end
   end
 
+  def read_instruction
+    #5, 5 -> input 1, grid size
+    #1, 1, N -> input 2,
+    #LRLMLRRLLMMMMR -> input 3
+  end
+
   def rover_position
-    "#{ @name } is located at (x, y) coordinates #{ @x_coord }, #{ @y_coord } and is pointing #{ @direction }"
+    "Rover is located at (x, y) coordinates #{ @x_coord }, #{ @y_coord } and is pointing #{ @direction }"
   end
 
   def move
     #x right left
-    case @direction == "N"
-      @
     #return "You want to move."
   end
 
@@ -42,3 +40,5 @@ class Rover
   end
 
 end
+
+rover1 = Rover.new(1, 2, "N")
