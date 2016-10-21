@@ -14,18 +14,6 @@ class Rover
     COMPASS_HASH[@direction]
   end
 
-  # def direction_to_degrees DELETE
-  #   if @direction == "N"
-  #     @direction_to_degrees = 0
-  #   elsif @direction == "E"
-  #     @direction_to_degrees = 90
-  #   elsif @direction == "S"
-  #     @direction_to_degrees = 180
-  #   else
-  #     @direction_to_degrees = 270
-  #   end
-  # end
-
   def position
     "Rover is located at (x, y) coordinates #{ @x_coord }, #{ @y_coord } and is pointing #{ @direction }"
   end
@@ -52,12 +40,49 @@ class Rover
 
 end
 
-def read_instruction
-  puts 'Enter grid size as "x y":'
-  grid_size = gets.chomp
-  puts grid_size.chars[0]
-  puts grid_size.chars[2]
+
+puts 'Enter grid size as "x y":'
+grid_size = gets.chomp
+grid_x_val = grid_size[0]
+grid_y_val = grid_size[2]
+
+puts 'Enter parameters for rover1 as "x_coordinate y_coordinate direction":'
+rover_parameters = gets.chomp
+x_coord     = rover_parameters[0].to_i
+y_coord     = rover_parameters[2].to_i
+direction   = rover_parameters[4].to_s
+rover1 = Rover.new(x_coord, y_coord, direction)
+
+puts 'Enter move and turn instructions for rover1 with no spaces:'
+move_instructions = gets.chomp
+
+move_instructions.chars.each do |x|
+  if x == "R" || x == "L"
+    rover1.turn(x)
+  elsif x == "M"
+    rover1.move
+  end
 end
 
-rover1 = Rover.new(1, 2, "E")
-#rover2 = Rover.new()
+puts 'Enter parameters for rover2 as "x_coordinate y_coordinate direction":'
+rover_parameters = gets.chomp
+x_coord     = rover_parameters[0].to_i
+y_coord     = rover_parameters[2].to_i
+direction   = rover_parameters[4].to_s
+rover2 = Rover.new(x_coord, y_coord, direction)
+
+puts 'Enter move and turn instructions for rover2 with no spaces:'
+move_instructions = gets.chomp
+
+move_instructions.chars.each do |x|
+  if x == "R" || x == "L"
+    rover2.turn(x)
+  elsif x == "M"
+    rover2.move
+  end
+end
+
+puts rover1.position
+puts rover2.position
+
+#puts 'Enter parameters for rover2 as "x_coordinate y_coordinate direction":'
